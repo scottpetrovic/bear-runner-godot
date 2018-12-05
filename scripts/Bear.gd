@@ -25,6 +25,10 @@ func _physics_process(delta):
 		print("player reference not found")
 
 	var linear_velocity = directionToGo * (movementSpeed * delta)	
-	move_and_slide(linear_velocity)
+	var collisionData = move_and_collide(linear_velocity) # returns KinematicCollision
+	
+	if collisionData:
+		if collisionData.collider.name == "Player":
+			print("bear collided with player")
 
 
