@@ -26,29 +26,39 @@ func _physics_process(delta):
 		direction.y -= run_speed
 	if Input.is_action_pressed("ui_right"):
 		direction.y += run_speed
+	
+	direction.normalized() # direction should not be larger than 1.0
+	
 	if direction.length() > run_speed:
 		direction /= direction.length()
 		direction *= run_speed
+	
+	
 	var camera = get_node("../Camera")
 	if camera != null:
 		direction = direction.rotated(-0.5*PI - camera.rotation.y)
+	
 	var h_motion_influence = delta
 	if is_on_floor():
 		h_motion_influence *= 10
 		motion.y = 0
 		if Input.is_action_just_pressed("jump"):
 			motion.y = 5 # jump power
+	
 	var h_motion = Vector2(motion.x, motion.z)
 	h_motion.x = lerp(h_motion.x, direction.x, h_motion_influence)
 	h_motion.y = lerp(h_motion.y, direction.y, h_motion_influence)
+	
 	if (previous_position-translation).length()/delta > 1:
 		$Model.anim("Run")
 		rotation.y = 0.5*PI - h_motion.angle()
 	else:
 		$Model.anim("Idle")
+	
 	previous_position = translation
 	motion.x = h_motion.x
 	motion.z = h_motion.y
+	
 	if map == null:
 		map = get_node("../Map")
 	else:
