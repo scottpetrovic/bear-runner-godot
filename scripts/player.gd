@@ -43,7 +43,7 @@ func _physics_process(delta):
 		h_motion_influence *= 10
 		motion.y = 0
 		if Input.is_action_just_pressed("jump"):
-			motion.y = 5 # jump power
+			motion.y = 7 # jump power
 	
 	var h_motion = Vector2(motion.x, motion.z)
 	h_motion.x = lerp(h_motion.x, direction.x, h_motion_influence)
@@ -63,3 +63,7 @@ func _physics_process(delta):
 		map = get_node("../Map")
 	else:
 		map.set_center(Vector2(translation.x, translation.z))
+
+
+func _on_SafeTrigger_Area_body_entered(body):
+	print("player is in safe area")

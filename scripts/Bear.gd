@@ -9,18 +9,19 @@ extends KinematicBody
 # Static - Ideal for walls and ground since they don't move at all
 # Kinematic - possible use for character. Inherits from kinematic body
 
-# Declare member variables here. Examples:
 var playerRef
-var movementSpeed = 10
+var movementSpeed = 0.4 
 var directionToGo = Vector3(0,0,0) # calculated each frame
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	playerRef =  get_node("../Player") # maybe a better way to get this??
 
+
 func _physics_process(delta):
 	if playerRef:
 		directionToGo = playerRef.translation - translation
+		directionToGo.y = 0 # stops Bear from flying to follow Player
 	else:
 		print("player reference not found")
 
