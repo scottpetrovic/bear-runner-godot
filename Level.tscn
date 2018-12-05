@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://objects/Floor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/camera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/Cube.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/Sphere.tscn" type="PackedScene" id=5]
+
+[sub_resource type="ProceduralSky" id=1]
+
+radiance_size = 3
+sky_curve = 0.146205
+sky_energy = 1.5
+ground_bottom_color = Color( 0.454902, 0.545098, 0.635294, 1 )
+ground_horizon_color = Color( 0.654902, 0.717647, 0.827451, 1 )
+sun_curve = 0.546416
+sun_energy = 9.51
+
+[sub_resource type="Environment" id=2]
+
+background_mode = 2
+background_sky = SubResource( 1 )
+background_sky_custom_fov = 79.7
+background_energy = 1.9
+ambient_light_color = Color( 0.533333, 0.854902, 0.847059, 1 )
+ambient_light_energy = 0.5
+ambient_light_sky_contribution = 0.95
+
+[node name="Level" type="Spatial"]
+
+[node name="Floor" parent="." instance=ExtResource( 1 )]
+transform = Transform( 20, 0, 0, 0, 0.5, 0, 0, 0, 20, 0, -0.553256, 0 )
+
+[node name="Camera" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.0764263, 0.209963, -0.974718, -0.0126719, 0.977293, 0.211511, 0.996995, 0.0285166, -0.0720303, -3.38929, 2.26535, -0.235415 )
+environment = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+run_speed = 7.0
+
+[node name="Cube" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9423, 1.01261, 5.08258 )
+
+[node name="Cube2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.17735, 1.01261, -4.38492 )
+
+[node name="Cube3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.78638, 1.01261, -8.8653 )
+
+[node name="Sphere" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.44569, 1.37683, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.439578, 0.898205, 0, -0.898205, 0.439578, 0, 5.3297, 0 )
+light_energy = 0.3
+shadow_enabled = true
+
