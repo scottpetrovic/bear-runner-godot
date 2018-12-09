@@ -4,8 +4,6 @@ extends KinematicBody
 # in the GUI, so changing it here probably won't do anything
 export(float) var run_speed = 10.0
 
-var map = null
-
 var motion = Vector3(0, 0, 0)
 var previous_position = Vector3(0, 0, 0)
 
@@ -59,10 +57,6 @@ func _physics_process(delta):
 	motion.x = h_motion.x
 	motion.z = h_motion.y
 	
-	if map == null:
-		map = get_node("../Map")
-	else:
-		map.set_center(Vector2(translation.x, translation.z))
 
 
 func _on_SafeTrigger_Area_body_entered(body):
