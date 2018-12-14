@@ -38,7 +38,7 @@ ambient_light_sky_contribution = 0.95
 transform = Transform( 20, 0, 0, 0, 0.5, 0, 0, 0, 20, 0, -0.553256, 0 )
 
 [node name="Camera" parent="." instance=ExtResource( 2 )]
-transform = Transform( -0.0764263, 0.209963, -0.974718, -0.0126719, 0.977293, 0.211511, 0.996995, 0.0285166, -0.0720303, -3.38929, 2.26535, -0.235415 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.462148, 2.26535, 5.14747 )
 environment = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
