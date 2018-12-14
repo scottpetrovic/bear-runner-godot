@@ -66,7 +66,7 @@ transform = Transform( -0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, -0.642788,
 script = ExtResource( 7 )
 
 [node name="Bear" parent="." instance=ExtResource( 8 )]
-transform = Transform( -0.235344, 0, 0.971912, 0, 1, 0, -0.971912, 0, -0.235344, 8.83121, 1.08895, 0 )
+transform = Transform( -0.235344, 0, 0.971912, 0, 1, 0, -0.971912, 0, -0.235344, 8.83121, -0.0675901, 0 )
 
 [node name="SafeTrigger (Area)" type="Area" parent="."]
 editor/display_folded = true
